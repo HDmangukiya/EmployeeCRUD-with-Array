@@ -1,9 +1,22 @@
 package com.employee.EmployeeApplication.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     int employeeId;
     String employeeName;
     String employeeCity;
+
+
+    public Employee() {
+    }
 
     public Employee(int employeeId, String employeeName, String employeeCity) {
         this.employeeId = employeeId;

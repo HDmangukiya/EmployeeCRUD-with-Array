@@ -19,29 +19,34 @@ public class EmployeeController {
     @Autowired //Which checks there is dependency for this file....
     EmployeeService employeeService;
 
-    @RequestMapping("/employees")  //Default request type is Get
+//    @RequestMapping("/employees")  //Default request type is Get
+    @GetMapping("/employees")
     public List<Employee> findAllEmployees() {
 
         return employeeService.getAllEmployees();
     }
 
-    @RequestMapping("/employees/{id}")
+//    @RequestMapping("/employees/{id}")
+    @GetMapping("/employees/{id}")
     public Employee findAnEmployee(@PathVariable int id){
         return employeeService.getAnEmployee(id);
     }
 
 
-    @RequestMapping(value = "/employees", method = RequestMethod.POST)
+//    @RequestMapping(value = "/employees", method = RequestMethod.POST)
+    @PostMapping("/employees")
     public void createEmployee(@RequestBody Employee employee){
         employeeService.createEmployee(employee);
     }
 
-    @RequestMapping(value = "/employees/{id}", method = RequestMethod.PUT)
+//    @RequestMapping(value = "/employees/{id}", method = RequestMethod.PUT)
+    @PutMapping("/employees/{id}")
     public void updateEmployee(@PathVariable int id,@RequestBody Employee employee){
         employeeService.updateEmployee(employee);
     }
 
-    @RequestMapping(value = "employees/{id}", method = RequestMethod.DELETE)
+//    @RequestMapping(value = "employees/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/employees/{id}")
     public List<Employee> deleteEmployee(@PathVariable int id){
         employeeService.deleteEmployee(id);
         return employeeService.getAllEmployees();
